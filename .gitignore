@@ -13,3 +13,5 @@ pom.xml.asc
 /ols.clj~
 /project.clj~
 /src/ml_clj/core.clj~
+/.DS_Store
+/src/ml_clj/ols.clj~

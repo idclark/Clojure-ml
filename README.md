@@ -1,13 +1,9 @@
-# ml-clj
+# Machine Learning in Clojure
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+Learning Clojure through machine learning. Roughly following Machine Learning in Action by Peter Harrington. 
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Ian Clark
 
 Distributed under the Eclipse Public License, the same as Clojure.
