@@ -16,3 +16,11 @@
 (deftest coef-test
   (testing "coefs"
     (= (:coefs incanter-lm) (:coefs ian-lm))))
+
+(deftest std-error-test
+  (testing "std-errors"
+    (= (:std-errors incanter-lm) (:std-errors ian-lm))))
+
+(deftest r-square-test
+  (testing "r-square"
+    (= (:r-square incanter-lm) (:r-square ian-lm))))
