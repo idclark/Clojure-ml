@@ -15,3 +15,4 @@ pom.xml.asc
 /src/ml_clj/core.clj~
 /.DS_Store
 /src/ml_clj/ols.clj~
+/test/ml_clj/ols_test.clj~
