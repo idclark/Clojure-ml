@@ -1,6 +1,7 @@
 # Machine Learning in Clojure
 
-Learning Clojure through machine learning. Roughly following Machine Learning in Action by Peter Harrington. 
+Learning Clojure through machine learning. Roughly following Machine Learning in Action by Peter Harrington and Clojure Data Analysis cookbook.
+
 
 ## License
 

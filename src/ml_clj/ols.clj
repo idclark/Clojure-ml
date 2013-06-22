@@ -12,7 +12,17 @@ linear regression for a continous dependent variable and a set of regressors.
 Input: vector for the independent variable
        matrix of regressors. Intercept defaults to true.
 
-intercept is not included at the moment!
+returns a map containing:
+coefs: the coefficient values
+std-errors: the standard errors of the coefficients
+resid: the residuals
+sse: sum of squared errors
+ssr: regression sum of squares
+r-square: coefficient of fit (range: 0 - 1)
+t-test: coefs / std-errors
+n: number of oberservation
+p: number of columns in regressor matrix
+coefs-ci: 95 percentile confidence intervals for each coeficient value
 
 "
 ([y x & {:keys [intercept] :or {intercept true}}]
