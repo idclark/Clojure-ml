@@ -16,3 +16,5 @@ pom.xml.asc
 /.DS_Store
 /src/ml_clj/ols.clj~
 /test/ml_clj/ols_test.clj~
+/test/ml_clj/logistic_test.clj~
+/src/ml_clj/logistic.clj~
