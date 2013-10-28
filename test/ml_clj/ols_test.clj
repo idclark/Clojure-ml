@@ -1,9 +1,7 @@
 (ns ml-clj.ols-test
-  (:use midje.sweet
-        ml-clj.ols
-        incanter.core
-        incanter.stats
-        incanter.datasets))
+  (:use [midje sweet]
+            [ml-clj ols]
+            [incanter core stats datasets]))
 
 (def iris (to-matrix (get-dataset :iris) :dummies true))
 (def y (sel iris :cols 0))

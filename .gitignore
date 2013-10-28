@@ -1,3 +1,5 @@
+*.clj~
+*.cljs~
 /target
 /lib
 /classes
