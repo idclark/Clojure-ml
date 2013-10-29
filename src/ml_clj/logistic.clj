@@ -18,9 +18,10 @@ sanity check: (sigmoid 0) should always evaluate to 0.5"
       [m (nrow X)
        z (mmult X init-vals)
        h (sigmoid z)
-       J (plus
-           (mult (div (minus 1) m) (mmult (trans y) (matrix (log h))))
-           (mmult (minus 1.0 (trans y)) (log (minus 1.0 h))))]
+       f-half (mult (matrix (map - y)) (log (sigmoid (mmult X init-vals))))
+       s-half (mult (minus 1 y) (log (minus 1 (sigmoid (mmult X init-vals)))))
+       sub-tmp (minus f-half s-half)
+       J (mmult (/ 1 m) (reduce + sub-tmp))]
     J))
 
 
