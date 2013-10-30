@@ -13,9 +13,10 @@ sanity check: (sigmoid 0) should always evaluate to 0.5"
 (defn cost-func
   "computes the cost function (J) that will be minimized
    inputs: initial-theta X matrix and Y vector"
-  [init-vals X y]
+  [X y]
   (let
       [m (nrow X)
+       init-vals (matrix (take (ncol X) (repeat 0)))
        z (mmult X init-vals)
        h (sigmoid z)
        f-half (mult (matrix (map - y)) (log (sigmoid (mmult X init-vals))))
