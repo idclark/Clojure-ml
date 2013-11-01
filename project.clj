@@ -7,7 +7,7 @@
                  [incanter/incanter "1.5.4"]
                  [org.clojure/data.csv "0.1.2"]
                  ]
-  :profiles {:dev {:dependencies [[midje "1.5.1"]]}}
+  :profiles {:dev {:dependencies [[midje "1.6-beta1"]]}}
   :resource-paths ["/test/resources"])
   
 

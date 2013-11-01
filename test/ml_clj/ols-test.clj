@@ -1,7 +1,9 @@
 (ns ml-clj.ols-test
-  (:use [midje sweet]
-            [ml-clj ols]
-            [incanter core stats datasets]))
+  (:require [midje.sweet :refer :all]
+            [ml-clj.ols :refer :all]
+            [incanter.core :refer :all]
+             [incanter.stats :refer :all]
+             [incanter.datasets :refer :all]))
 
 (def iris (to-matrix (get-dataset :iris) :dummies true))
 (def y (sel iris :cols 0))

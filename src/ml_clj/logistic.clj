@@ -1,6 +1,5 @@
 (ns ml-clj.logistic
-  (:require [incanter.core :refer [div exp plus minus mult mmult
-                                  nrow trans log matrix]]))
+  (:require [incanter.core :refer :all]))
 
 (defn sigmoid
   "compute the inverse logit function, large positive numbers should be

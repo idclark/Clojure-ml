@@ -1,14 +1,17 @@
 (ns ml-clj.logistic-test
-  (:use [midje sweet]
-            [ml-clj logistic]
-            [incanter core stats datasets]))
+  (:require [midje.sweet :refer :all]
+            [ml-clj.logistic :refer :all]
+            [incanter.core :refer :all]
+            [incanter.stats :refer :all]
+            [incanter.io :refer :all]))
+
 ;build some data for validation
 (def t-vec (matrix [0 0 0]))
 (def t-mat (matrix [[0 0 0] [0 0 0]]))
 
 (def test-data (read-dataset "./test/resources/ex2data1.txt" :header false))
 (def X (to-matrix (sel test-data :cols (range 0 2))))
-(def y (to-matrix (sel test-data :cols 2)))
+(def y (matrix (sel test-data :cols 2)))
 
 
 (facts "about the simoid function" 
