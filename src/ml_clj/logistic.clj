@@ -1,5 +1,7 @@
 (ns ml-clj.logistic
-  (:require [incanter.core :refer :all]))
+  (:require [incanter.core :refer :all]
+            [incanter.optimize :refer :all
+             ]))
 
 (defn sigmoid
   "compute the inverse logit function, large positive numbers should be
@@ -11,7 +13,7 @@ sanity check: (sigmoid 0) should always evaluate to 0.5"
 
 (defn cost-func
   "computes the cost function (J) that will be minimized
-   inputs: initial-theta X matrix and Y vector"
+   inputs:params theta X matrix and Y vector"
   [X y]
   (let
       [m (nrow X)
@@ -23,14 +25,3 @@ sanity check: (sigmoid 0) should always evaluate to 0.5"
        sub-tmp (minus f-half s-half)
        J (mmult (/ 1 m) (reduce + sub-tmp))]
     J))
-
-
-;(defn logistic-regression
- ; "minimize the cost function, input is the cost function and starting values"
-  ;[f init-vals]
-  ;(minimize cost-func (matrix [0 0] X y (matrix [0 0]))))
-
-
-
-
-
