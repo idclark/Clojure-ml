@@ -27,9 +27,9 @@
   "trains ham filter using words in the doc"
   (train-doc doc good))
 
-(def train-word [goodbad word]
-  (update-in goodbad [word]
-             (fn [old] (inc (or old 0)))))
+(defn train-word [goodbad word]
+  (swap! goodbad update-in [word]
+                     (fn [old] (inc (or old 0)))))
 
 (def train-doc [goodbad doc]
   (reduce train-word {} (normalize-doc doc)))
