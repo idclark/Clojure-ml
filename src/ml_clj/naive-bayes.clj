@@ -1,5 +1,4 @@
-(ns ml-clj.naive-bayes
-  (:require [incanter.core :refer :all]))
+(ns ml-clj.naive-bayes)
 
 (def test-docs [["my" "dog" "has" "flea" "problems" "please" "help"]
 		   ["maybe" "not" "take" "him" "to" "dog" "park" "stupid"]
@@ -10,7 +9,7 @@
 
 (def doc-class [0 1 0 1 0 1])
 
-(defn normalize-document [documents]
+(defn normalize-doc [documents]
   "from a group of documents find all distinct strings"
   (distinct (flatten documents)))
 
@@ -19,20 +18,20 @@
 (def ham (atom {}))
 (def spam (atom {}))
 
-(def spam [doc dic]
+(def spam [doc m]
   "trains spam filter using words in the doc"
-  (train-doc doc bad))
+  (train-doc! doc spam))
 
 (def ham [doc m]
   "trains ham filter using words in the doc"
-  (train-doc doc good))
+  (train-doc! doc ham))
 
-(defn train-word [goodbad word]
+(defn train-word! [goodbad word]
   (swap! goodbad update-in [word]
                      (fn [old] (inc (or old 0)))))
 
-(def train-doc [goodbad doc]
-  (reduce train-word {} (normalize-doc doc)))
+(defn train-doc! [goodbad doc]
+  (reduce train-word! {} (normalize-doc doc)))
 
 (defn calculate-frequencies [words]
  "convert list of words to a word-frequency hash"
@@ -43,7 +42,7 @@
 ;TODO this currently throws npe when word not found
 (defn score-word [word good bad]
   "score the prob that word is spam"
-  (/ (@bad word) (+ (@bad word) (@good word))))
+  (/ (or (@bad word) 0) (+ (or (@bad word) 0) (or (@good word) 0))))
 
 (defn score-document [doc]
   "scores the probability that a document is spam"
