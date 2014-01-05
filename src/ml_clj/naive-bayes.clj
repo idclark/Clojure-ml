@@ -1,13 +1,5 @@
 (ns ml-clj.naive-bayes)
 
-(def test-docs [["my" "dog" "has" "flea" "problems" "please" "help"]
-		   ["maybe" "not" "take" "him" "to" "dog" "park" "stupid"]
-		   ["my" "dalmation" "is" "so" "cute" "I" "love" "him"]
-		   ["stop" "posting" "stupid" "worthless" "garbage" ]
-		   ["mr" "licks" "ate" "my" "steak" "how" "to" "stop" "him"]
-		   ["quit" "buying" "worthless" "dog" "food" "stupid"]])
-
-(def doc-class [0 1 0 1 0 1])
 
 (defn normalize-doc [documents]
   "from a group of documents find all distinct strings"
@@ -31,7 +23,8 @@
                      (fn [old] (inc (or old 0)))))
 
 (defn train-doc! [goodbad doc]
-  (reduce train-word! {} (normalize-doc doc)))
+  (for [i doc]
+    (train-word! goodbad i)))
 
 (defn calculate-frequencies [words]
  "convert list of words to a word-frequency hash"
@@ -39,7 +32,6 @@
   {}
   words))
 
-;TODO this currently throws npe when word not found
 (defn score-word [word good bad]
   "score the prob that word is spam"
   (/ (or (@bad word) 0) (+ (or (@bad word) 0) (or (@good word) 0))))
@@ -47,7 +39,6 @@
 (defn score-document [doc]
   "scores the probability that a document is spam"
   (let [
-        words (normalize-document doc)
         w-probs (for [w words]
                   (score-word w))]
     (/ (reduce + w-probs) (length w-probs))))
